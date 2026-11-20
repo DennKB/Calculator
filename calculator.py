@@ -1,25 +1,59 @@
-def mult(x, y):
-  return x * y
+# calculator.py
 
-def div(x, y):
-  return x / y
+def add(a, b):
+    # TODO: Person A
+    pass
 
-def add(x, y):
-  return x + y
+def subtract(a, b):
+    # TODO: Person A
+    pass
 
-def sub(x, y):
-  return x - y
+def multiply(a, b):
+    # TODO: Person B
+    pass
 
-try:
-  choice = input("Math Equation: ")
-  equation = choice.split(" ")
-  if equation[1] == "+":
-    print(f"{equation[0]} + {equation[2]} = {add(int(equation[0]), int(equation[2]))}")
-  if equation[1] == "-":
-    print(f"{equation[0]} - {equation[2]} = {sub(int(equation[0]), int(equation[2]))}")
-  if equation[1] == "/":
-    print(f"{equation[0]} / {equation[2]} = {div(int(equation[0]), int(equation[2]))}")
-  if equation[1] == "*":
-    print(f"{equation[0]} * {equation[2]} = {mult(int(equation[0]), int(equation[2]))}")
-except ZeroDivisionError:
-  print("Can't Divide by 0")
+def divide(a, b):
+    # TODO: Person B
+    pass
+
+def calculator():
+    print("Simple Calculator (+, -, *, /)")
+    print("Type 'q' at any prompt to quit.\n")
+
+    while True:
+        num1_input = input("Enter first number: ").strip()
+        if num1_input.lower() == 'q':
+            break
+
+        op = input("Enter operator (+, -, *, /): ").strip()
+        if op.lower() == 'q':
+            break
+
+        num2_input = input("Enter second number: ").strip()
+        if num2_input.lower() == 'q':
+            break
+
+        try:
+            num1 = float(num1_input)
+            num2 = float(num2_input)
+        except ValueError:
+            print("Invalid number. Please enter valid decimals or integers.\n")
+            continue
+
+        if op == '+':
+            result = add(num1, num2)
+        elif op == '-':
+            result = subtract(num1, num2)
+        elif op == '*':
+            result = multiply(num1, num2)
+        elif op == '/':
+            result = divide(num1, num2)
+        else:
+            print("Invalid operator. Use +, -, *, or /.\n")
+            continue
+
+        if result is not None:
+            print(f"Result: {result:g}\n")
+
+if __name__ == "__main__":
+    calculator()
